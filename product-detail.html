@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Vila do Artesão</title>
+
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script type="text/javascript" src="js/navBar.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/slick.css"/>
+        <script type="text/javascript" src="js/produtos.js"></script>
+        <script type="text/javascript" src="js/produto-detail.js"></script>
+        <link href="css/styles.css" rel="stylesheet">
+        <link rel="shortcut icon" type="imagex/png" href="images/header/LOG005.png">
+    </head>
+    
+    <body onload="definirNavbar();">
+        <!-- Loading de carregamento -->
+        <section class="preloader">
+            <div class="spinner">
+                <span class="sk-inner-circle"></span>
+            </div>
+        </section>
+    
+        <main>
+            <!-- Nav bar-->
+            <div id="Navbar_JS"></div>
+                    
+            <header class="site-header section-padding d-flex justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-10 col-12">
+                            <h1>
+                                <span class="d-block text-primary">Produto</span>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="product-detail section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div id ="div_produto"></div>
+                        <div class="col-lg-6 col-12">
+                            <div class="product-thumb">
+                                <img src="" id="imagem_produto" class="img-fluid product-image" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                            <div class="product-info">
+                                <div>
+                                    <h2 class="product-title mb-0" id="nome_produto">OCORREU UM ERRO! DURANTE O CARREGAMENTO DA PÁGINA!!!</h2>
+
+                                    <p class="product-p" id="id_produto"><strong></strong></p>
+                                    
+                                </div>
+
+                                <h2 class="product-price ms-auto mt-auto mb-5" id="preco_produto"></h2>
+                            </div>
+
+                            <div class="product-description">
+
+                                <strong class="d-block mt-4 mb-2"></strong>
+
+                                <p class="lead mb-5" id="descricao_produto">por favor volte para página anterior ou recarregue a página</p>
+                                
+                                <div id="artesao-alinhamento" >
+                                <a id="imagem_artesao_link" href="artesaopage.html"><img id="imagem_artesao" src="" class="imgartesao" alt=""></a>
+                                <p id="name-artesao"><strong><a id="nome_artesao" href="artesaopage.html"></a></strong></p>
+                                
+                                
+                                <ul class="social-icon" id="alinhamento-social">
+                                    
+                                    <li><a href="#" class="social-icon-link bi-facebook icon-img" id="facebook"></a></li>
+        
+                                    <li><a href="#" class="social-icon-link bi-whatsapp icon-img" id="whatsapp"></a></li>
+        
+                                    <li><a href="#" class="social-icon-link bi-instagram icon-img" id="instagram"></a></li>
+        
+                                </ul>
+                                </div>
+                            </div>
+                            <br>
+                            
+                                
+                            
+                            <div id="produtodiv" class="product-cart-thumb row">
+                                <div class="col-lg-6 col-12">
+                                    
+                                    <select class="form-select cart-form-select" id="inputGroupSelect01">
+                                        <option selected>Quantidade</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-lg-6 col-12 mt-4 mt-lg-0">
+                                    <a id="Comprar_link" href="../products.html"><button class="btn custom-btn cart-btn">Comprar</button></a>
+                                </div>
+
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="related-product section-padding border-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <h3 class="mb-5">Veja também!</h3>
+                        </div>
+                        <div id="div_produto2" class="row"></div>
+                    </div>
+                </div>
+            </section>
+                    
+
+        </main>
+        <!-- Rodapé do site Vila do Artesão-->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+                    <!-- Primeira seção do Rodapé do site Vila do Artesão-->
+                    <div class="col-lg-3 col-10 me-auto mb-4">
+                        <h4 class="text-white mb-3"><a href="index.html">Vila do Artesão</a></h4>
+                        <p class="copyright-text text-muted mt-lg-5 mb-4 mb-lg-0">Copyright © 2024 <strong>Vila do Artesão</strong></p>
+                
+                        
+                    </div>
+                    <!-- Segunda seção do Rodapé do site Vila do Artesão-->
+                    <div class="col-lg-5 col-8">
+                        
+                        <h5 class="text-white mb-3">Localização</h5>
+
+                        <p class="text-muted">Av. Prof. Almeida Barreto, s/n - São José, Campina Grande - PB, 58400-328</p>
+
+                    </div>
+
+                    <div class="col-lg-3 col-4">
+                        <!-- Terceira seção do Rodapé do site Vila do Artesão-->
+                        <h5 class="text-white mb-3">Social</h5>
+                        
+                        <ul class="social-icon">
+                            <!-- Redes sociais do Rodapé do site Vila do Artesão-->
+                            <li><a href="#" class="social-icon-link bi-facebook"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-whatsapp"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-instagram"></a></li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+        
+        
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/Headroom.js"></script>
+        <script src="js/jQuery.headroom.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/custom.js"></script>
+
+    </body>
+</html>
