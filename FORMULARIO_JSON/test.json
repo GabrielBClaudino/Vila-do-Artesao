@@ -1,0 +1,125 @@
+{
+  "artesoes": [
+    {
+      "id": 1,
+      "nome": "Artesão Atualizado",
+      "telefone": "+55 11 91234-5678",
+      "facebook": "facebook.com/ana.silva",
+      "instagram": "instagram.com/ana_silva_artes",
+      "biografia": "Nova biografia atualizada",
+      "titulo_biografia": "A Mestra do Crochê",
+      "categoria": "Crochê",
+      "foto_perfil": "images/people/artesao-1.jpeg"
+    },
+    {
+      "id": 2,
+      "nome": "Artesão Atualizado",
+      "telefone": "+55 21 99876-5432",
+      "facebook": "facebook.com/joao.pereira",
+      "instagram": "instagram.com/joao_pereira_art",
+      "biografia": "Nova biografia atualizada",
+      "titulo_biografia": "Esculturas em Madeira",
+      "categoria": "Escultura",
+      "foto_perfil": "images/people/artesao-3.jpeg"
+    },
+    {
+      "id": 3,
+      "nome": "Maria Oliveira",
+      "telefone": "+55 31 98765-4321",
+      "facebook": "facebook.com/maria.oliveira",
+      "instagram": "instagram.com/maria_oliveira_art",
+      "biografia": "Maria é uma artesã que se dedica à criação de bijuterias personalizadas, utilizando materiais reciclados em suas criações. Sua abordagem sustentável não apenas promove a reutilização de materiais, mas também confere um caráter único e exclusivo a cada peça, refletindo o seu compromisso com a criatividade e a responsabilidade ambiental.",
+      "titulo_biografia": "Bijuterias Sustentáveis",
+      "categoria": "Bijuterias",
+      "foto_perfil": "images/people/artesao-2.jpeg"
+    },
+    {
+      "id": 4,
+      "nome": "Carlos Souza",
+      "telefone": "+55 41 99654-3210",
+      "facebook": "facebook.com/carlos.souza",
+      "instagram": "instagram.com/carlos_souza_art",
+      "biografia": "Carlos é um ceramista com uma década de experiência, concentrando-se na produção de peças contemporâneas. Sua trajetória de uma década na cerâmica permitiu-lhe aprimorar suas técnicas e explorar novas formas e estilos, resultando em obras que mesclam tradição e inovação. Seu trabalho é reconhecido pela sua originalidade e pelo uso criativo de técnicas e materiais, tornando-o uma referência na cena ceramista contemporânea.",
+      "titulo_biografia": "Arte em Cerâmica",
+      "categoria": "Cerâmica",
+      "foto_perfil": "images/people/artesao-4.jpeg"
+    },
+    {
+      "id": 5,
+      "nome": "Luciana Mendes",
+      "telefone": "+55 51 91234-0987",
+      "facebook": "facebook.com/luciana.mendes",
+      "instagram": "instagram.com/luciana_mendes_art",
+      "biografia": "Luciana é uma artesã que se dedica ao bordado, criando obras que combinam habilmente tradição e modernidade. Sua técnica refinada e sua abordagem criativa permitem que ela explore novas possibilidades dentro dessa arte tradicional, resultando em peças únicas e cativantes.",
+      "titulo_biografia": "Bordados Artísticos",
+      "categoria": "Bordado",
+      "foto_perfil": "images/people/artesao-8.jpeg"
+    },
+    {
+      "id": 6,
+      "nome": "Pedro Santos",
+      "telefone": "+55 61 98765-6789",
+      "facebook": "facebook.com/pedro.santos",
+      "instagram": "instagram.com/pedro_santos_art",
+      "biografia": "Pedro é um mestre na marcenaria, capaz de transformar simples pedaços de madeira em verdadeiras obras de arte. Sua habilidade e experiência permitem que ele crie móveis e esculturas de alta qualidade, cada uma refletindo sua paixão pela arte da marcenaria e sua busca pela perfeição.",
+      "titulo_biografia": "Arte em Madeira",
+      "categoria": "Marcenaria",
+      "foto_perfil": "images/people/artesao-6.jpeg"
+    },
+    {
+      "id": 7,
+      "nome": "Julia Almeida",
+      "telefone": "+55 71 99876-5432",
+      "facebook": "facebook.com/julia.almeida",
+      "instagram": "instagram.com/julia_almeida_art",
+      "biografia": "Julia é uma especialista em mosaicos, conhecida por criar peças vibrantes e coloridas que cativam o olhar. Sua habilidade em combinar diferentes materiais e cores resulta em obras que transmitem energia e vitalidade, adicionando um toque de arte e beleza a qualquer ambiente.",
+      "titulo_biografia": "Mosaicos Vibrantes",
+      "categoria": "Mosaico",
+      "foto_perfil": "images/people/artesao-10.jpeg"
+    },
+    {
+      "id": 8,
+      "nome": "Ricardo Lima",
+      "telefone": "+55 81 91234-5678",
+      "facebook": "facebook.com/ricardo.lima",
+      "instagram": "instagram.com/ricardo_lima_art",
+      "biografia": "Ricardo é um talentoso artesão que cria móveis artesanais com um estilo que combina rusticidade e contemporaneidade. Seu trabalho é caracterizado pelo uso habilidoso de materiais naturais e técnicas tradicionais de marcenaria, resultando em peças que são ao mesmo tempo funcionais e esteticamente atraentes.",
+      "titulo_biografia": "Móveis Artesanais",
+      "categoria": "Mobiliário",
+      "foto_perfil": "images/people/artesao-5.jpeg"
+    },
+    {
+      "id": 9,
+      "nome": "Fernanda Rocha",
+      "telefone": "+55 91 98765-4321",
+      "facebook": "facebook.com/fernanda.rocha",
+      "instagram": "instagram.com/fernanda_rocha_art",
+      "biografia": "Fernanda é uma ceramista que se dedica à criação de peças decorativas e utilitárias. Sua habilidade e criatividade são evidentes em cada obra, onde ela combina técnicas tradicionais de cerâmica com sua própria expressão artística, resultando em peças únicas e encantadoras que agregam beleza e funcionalidade a qualquer ambiente.",
+      "titulo_biografia": "Cerâmica Utilitária",
+      "categoria": "Cerâmica",
+      "foto_perfil": "images/people/artesao-9.jpeg"
+    },
+    {
+      "id": 10,
+      "nome": "Marcos Teixeira",
+      "telefone": "+55 11 99654-3210",
+      "facebook": "facebook.com/marcos.teixeira",
+      "instagram": "instagram.com/marcos_teixeira_art",
+      "biografia": "Marcos é um artista plástico que se destaca pelo uso criativo de técnicas de reciclagem em suas obras. Através da reutilização de materiais descartados, ele transforma o ordinário em extraordinário, criando obras que provocam reflexão sobre questões ambientais e sociais, ao mesmo tempo em que despertam a imaginação e o interesse do espectador.",
+      "titulo_biografia": "Arte Reciclada",
+      "categoria": "Arte Plástica",
+      "foto_perfil": "images/people/artesao-7.jpeg"
+    },
+    {
+      "id": 11,
+      "nome": "Elisa Faria",
+      "telefone": "+55 21 91234-0987",
+      "facebook": "facebook.com/elisa.faria",
+      "instagram": "instagram.com/elisa_faria_art",
+      "biografia": "Elisa é uma designer de bijuterias que utiliza pedras naturais e metais nobres em suas criações. Inspirada pela beleza da natureza, ela combina cores, texturas e formas de forma harmoniosa, criando peças únicas e sofisticadas que refletem seu amor pela arte e pela joalheria. Cada uma de suas bijuterias é uma obra de arte em si, feita com cuidado e atenção aos detalhes, destinada a realçar a beleza e a personalidade de quem as usa.",
+      "titulo_biografia": "Bijuterias de Pedra",
+      "categoria": "Bijuterias",
+      "foto_perfil": "images/people/artesao-11.jpeg"
+    }
+  ]
+}
