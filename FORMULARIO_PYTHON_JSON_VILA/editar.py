@@ -182,7 +182,7 @@ def editar_imagem_produto(id_produto, nova_imagem):
         data = json_read(PRODUTOS_JSON_FILE)
         for produto in data.get('produtos', []):
             if produto.get('id') == id_produto:
-                produto['imagem'] = nova_imagem
+                produto['imagem_produto'] = nova_imagem
                 Pupdate_json_file(data)
                 return "Imagem do produto atualizada com sucesso!"
         return "Produto não encontrado."
@@ -195,7 +195,7 @@ def editar_id_artesao_produto(id_produto, novo_id_artesao):
         data = json_read(PRODUTOS_JSON_FILE)
         for produto in data.get('produtos', []):
             if produto.get('id') == id_produto:
-                produto['idArtesao'] = novo_id_artesao
+                produto['id_artesao'] = novo_id_artesao
                 Pupdate_json_file(data)
                 return "ID do artesão do produto atualizado com sucesso!"
         return "Produto não encontrado."

@@ -155,17 +155,17 @@
                     artesaoCards.innerHTML = '';
 
                     produtos.forEach(produto => {
-                        if (produto.idArtesao == artesaoId) {
+                        if (produto.id_artesao == artesaoId) {
                             let card = document.createElement('div');
                             card.className = 'col-md-4 mb-4';
 
                             card.innerHTML = `
                                 <div class="card h-100">
-                                    <img src="${produto.imagem}" class="card-img-top" alt="Imagem do Produto" onerror="this.src='https://via.placeholder.com/150';">
+                                    <img src="${produto.imagem_produto}" class="card-img-top" alt="Imagem do Produto" onerror="this.src='https://via.placeholder.com/150';">
                                     <div class="card-body">
                                         <h5 class="card-title">${produto.nome}</h5>
                                         <p class="card-text"><strong>Descrição:</strong> ${produto.descricao}</p>
-                                        <p class="card-text"><strong>Vinculado ao Artesão de ID: ${produto.idArtesao}</strong></p>
+                                        <p class="card-text"><strong>Vinculado ao Artesão de ID: ${produto.id_artesao}</strong></p>
                                         <p class="card-text"><strong>Preço:</strong> R$ ${produto.preco.toFixed(2)}</p>
                                         <a class="btn btn-primary botao" href="editar_produto.html/?#${produto.id}">Editar Produto</a>
                                         <p></p>

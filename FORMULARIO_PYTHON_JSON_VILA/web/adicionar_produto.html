@@ -69,10 +69,10 @@
                 let nome = document.getElementById('nomeProduto').value;
                 let descricao = document.getElementById('descricaoProduto').value;
                 let preco = parseFloat(document.getElementById('precoProduto').value);
-                let imagem = document.getElementById('imagemProduto').value;
-                let idArtesao = parseInt(document.getElementById('idArtesaoProduto').value);
+                let imagem_produto = document.getElementById('imagemProduto').value;
+                let id_artesao = parseInt(document.getElementById('idArtesaoProduto').value);
                 
-                if (!nome ||!descricao ||!preco ||!imagem ||!idArtesao) {
+                if (!nome ||!descricao ||!preco ||!imagem_produto ||!id_artesao) {
                     alert("Verifique as entradas com '*' pois algumas podem estar vazias");
                     return;
                 }
@@ -81,8 +81,8 @@
                     nome,
                     descricao,
                     preco,
-                    imagem,
-                    idArtesao
+                    imagem_produto,
+                    id_artesao
                 };
                 
                 const response = await eel.create_produto(newProduto)();
