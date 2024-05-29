@@ -4,29 +4,30 @@ import os
 JSON_FILE = 'artesoes.json'
 PRODUTOS_JSON_FILE = 'produto.json'
 
-def json_read(file_path, encoding='utf-8'):
-    with open(file_path, 'r', encoding=encoding) as file:
+def json_read(file_path):
+    with open(file_path, 'r') as file:
         return json.load(file)
 
-def json_write(file_path, data, encoding='utf-8'):
-    with open(file_path, 'w', encoding=encoding) as file:
+def json_write(file_path, data):
+    with open(file_path, 'w') as file:
         json.dump(data, file, ensure_ascii=False, indent=2)
     return "Foi criado com Sucesso!"
 
 def ensure_json_file():
     if not os.path.exists(JSON_FILE):
         with open(JSON_FILE, 'w') as file:
-            json.dump({"artesoes": []}, file)
+            json.dump({"artesoes": []}, file, ensure_ascii=False, indent=2)
+    if not os.path.exists(PRODUTOS_JSON_FILE):
+        with open(PRODUTOS_JSON_FILE, 'w') as file:
+            json.dump({"produtos": []}, file, ensure_ascii=False, indent=2)
 
 def update_json_file(data):
     ensure_json_file()
-    with open(JSON_FILE, 'w') as file:
-        json.dump(data, file, ensure_ascii=False, indent=2)
-        
+    json_write(JSON_FILE, data)
+
 def Pupdate_json_file(data):
     ensure_json_file()
-    with open(PRODUTOS_JSON_FILE, 'w') as file:
-        json.dump(data, file, ensure_ascii=False, indent=2)
+    json_write(PRODUTOS_JSON_FILE, data)
 
 
 def editar_nome_artesao(id_artesao, novo_nome):
@@ -55,7 +56,6 @@ def editar_categoria_artesao(id_artesao, nova_categoria):
     except Exception as e:
         return f"Erro ao editar categoria do artesão: {e}"
 
-
 def editar_foto_perfil_artesao(id_artesao, nova_foto_perfil):
     try:
         ensure_json_file()
@@ -68,7 +68,6 @@ def editar_foto_perfil_artesao(id_artesao, nova_foto_perfil):
         return "Artesão não encontrado."
     except Exception as e:
         return f"Erro ao editar foto do perfil do artesão: {e}"
-
 
 def editar_telefone_artesao(id_artesao, novo_telefone):
     try:
@@ -83,7 +82,6 @@ def editar_telefone_artesao(id_artesao, novo_telefone):
     except Exception as e:
         return f"Erro ao editar telefone do artesão: {e}"
 
-
 def editar_facebook_artesao(id_artesao, novo_facebook):
     try:
         ensure_json_file()
@@ -96,7 +94,6 @@ def editar_facebook_artesao(id_artesao, novo_facebook):
         return "Artesão não encontrado."
     except Exception as e:
         return f"Erro ao editar Facebook do artesão: {e}"
-
 
 def editar_instagram_artesao(id_artesao, novo_instagram):
     try:
@@ -119,10 +116,10 @@ def editar_titulo_biografia_artesao(id_artesao, novo_titulo):
             if artesao.get('id') == id_artesao:
                 artesao['titulo_biografia'] = novo_titulo
                 update_json_file(data)
-                return "titulo biografia do artesão atualizado com sucesso!"
+                return "Título da biografia do artesão atualizado com sucesso!"
         return "Artesão não encontrado."
     except Exception as e:
-        return f"Erro ao editar Instagram do artesão: {e}"
+        return f"Erro ao editar título da biografia do artesão: {e}"
 
 def editar_biografia_artesao(id_artesao, nova_bio):
     try:
@@ -132,10 +129,10 @@ def editar_biografia_artesao(id_artesao, nova_bio):
             if artesao.get('id') == id_artesao:
                 artesao['biografia'] = nova_bio
                 update_json_file(data)
-                return "Biografia do artesão atualizado com sucesso!"
+                return "Biografia do artesão atualizada com sucesso!"
         return "Artesão não encontrado."
     except Exception as e:
-        return f"Erro ao editar Instagram do artesão: {e}"
+        return f"Erro ao editar biografia do artesão: {e}"
 
 def editar_nome_produto(id_produto, novo_nome):
     try:

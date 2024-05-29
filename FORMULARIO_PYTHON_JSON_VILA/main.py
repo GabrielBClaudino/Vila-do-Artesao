@@ -8,32 +8,30 @@ eel.init('web')
 ARTESAO_JSON_FILE = 'artesao.json'
 PRODUTOS_JSON_FILE = 'produto.json'
 
-def json_read(file_path, encoding='utf-8'):
-    with open(file_path, 'r', encoding=encoding) as file:
+def json_read(file_path):
+    with open(file_path, 'r') as file:
         return json.load(file)
 
-def json_write(file_path, data, encoding='utf-8'):
-    with open(file_path, 'w', encoding=encoding) as file:
+def json_write(file_path, data):
+    with open(file_path, 'w') as file:
         json.dump(data, file, ensure_ascii=False, indent=2)
     return "Foi criado com Sucesso!"
 
 def ensure_json_file():
     if not os.path.exists(ARTESAO_JSON_FILE):
         with open(ARTESAO_JSON_FILE, 'w') as file:
-            json.dump({"artesoes": []}, file)
+            json.dump({"artesoes": []}, file, ensure_ascii=False, indent=2)
     if not os.path.exists(PRODUTOS_JSON_FILE):
         with open(PRODUTOS_JSON_FILE, 'w') as file:
-            json.dump({"produtos": []}, file)
+            json.dump({"produtos": []}, file, ensure_ascii=False, indent=2)
 
 def update_json_file(data):
     ensure_json_file()
-    with open(ARTESAO_JSON_FILE, 'w') as file:
-        json.dump(data, file, ensure_ascii=False, indent=2)
+    json_write(ARTESAO_JSON_FILE, data)
 
 def Pupdate_json_file(data):
     ensure_json_file()
-    with open(PRODUTOS_JSON_FILE, 'w') as file:
-        json.dump(data, file, ensure_ascii=False, indent=2)
+    json_write(PRODUTOS_JSON_FILE, data)
 
 @eel.expose
 def json_update(new_data):
