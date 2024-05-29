@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adicionar Artesão - Vila do Artesão</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script type="text/javascript" src="/eel.js"></script>
+    <style>
+        body {
+            background-image: linear-gradient(to top, rgba(243, 114, 63, 0.514), rgba(94, 93, 93, 0.74)), url("https://img.freepik.com/fotos-gratis/maos-segurando-uma-forma-de-coracao-vermelho-sobre-fundo-de-madeira_23-2148355038.jpg?size=626&ext=jpg&ga=GA1.1.2082370165.1716681600&semt=sph");
+            background-size: cover;
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            background-color: white;
+            border: 10px solid white;
+            border-radius: 15px;
+        }
+        .botao {
+            background: linear-gradient(to top, rgb(255, 125, 73), rgba(255, 255, 255, 0.993)) !important;
+            border: 0px solid white !important;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <a href="index.html"><button type="button" class="botao btn btn-info">Voltar</button></a>
+        <h1>Adicionar Novo Artesão</h1>
+        <div id="addArtesaoForm">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome *</label>
+                <input type="text" class="form-control" id="nome">
+            </div>
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoria *</label>
+                <input type="text" class="form-control" id="categoria">
+            </div>
+            <div class="mb-3">
+                <label for="titulo_biografia" class="form-label">Título da Biografia</label>
+                <input type="text" class="form-control" id="titulo_biografia">
+            </div>
+            <div class="mb-3">
+                <label for="biografia" class="form-label">Biografia</label>
+                <textarea class="form-control" id="descricao" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="imagem" class="form-label">Foto do Perfil</label>
+                <input type="text" class="form-control" id="imagem" placeholder="URL da imagem">
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone *</label>
+                <input type="tel" class="form-control" id="telefone">
+            </div>
+            <div class="mb-3">
+                <label for="facebook" class="form-label">Facebook</label>
+                <input type="text" class="form-control" id="facebook">
+            </div>
+            <div class="mb-3">
+                <label for="instagram" class="form-label">Instagram</label>
+                <input type="text" class="form-control" id="instagram">
+            </div>
+            <button onclick="createArtesao();" class="botao btn btn-primary" id="adicionar">Adicionar Artesão</button>
+        </div>
+        <div id="mensagemSucesso" class="alert alert-success mt-3" style="display: none;">
+            Artesão adicionado com sucesso!
+        </div>
+        <script type="text/javascript">
+            async function createArtesao() {
+                let nome = document.getElementById('nome').value;
+                let categoria = document.getElementById('categoria').value;
+                let tituloBiografia = document.getElementById('titulo_biografia').value;
+                let biografia = document.getElementById('descricao').value;
+                let imagem = document.getElementById('imagem').value;
+                let telefone = document.getElementById('telefone').value;
+                let facebook = document.getElementById('facebook').value;
+                let instagram = document.getElementById('instagram').value;
+                
+                if (!nome || !categoria || !telefone || !imagem) {
+                    alert("Verifique as entradas com '*' pois algumas podem estar vazias");
+                    return;
+                }
+                if (!tituloBiografia) {
+                    tituloBiografia = `Oi sou ${nome} e trabalho com ${categoria} gosto muito do que faço!`;
+                }
+                if (!biografia) {
+                    biografia = "";
+                }
+                if (!facebook) {
+                    facebook = "https://www.facebook.com/viladoartesaocg/";
+                }
+                if (!instagram) {
+                    instagram = "https://www.instagram.com/viladoartesaocg/";
+                }
+                
+                const newArtesao = {
+                    nome,
+                    categoria,
+                    titulo_biografia: tituloBiografia,
+                    biografia,
+                    foto_perfil: imagem,
+                    telefone,
+                    facebook,
+                    instagram
+                };
+                
+                const response = await eel.create_artesao(newArtesao)();
+                if (response === "Artesão criado com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                } else {
+                    alert(response);
+                }
+            }
+        </script>
+    </main>
+</body>
+</html>

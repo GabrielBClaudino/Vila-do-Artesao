@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adicionar Produto - Vila do Artesão</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script type="text/javascript" src="/eel.js"></script>
+    <style>
+        body {
+            background-image: linear-gradient(to top, rgba(243, 114, 63, 0.514), rgba(94, 93, 93, 0.74)), url("https://img.freepik.com/fotos-gratis/maos-segurando-uma-forma-de-coracao-vermelho-sobre-fundo-de-madeira_23-2148355038.jpg?size=626&ext=jpg&ga=GA1.1.2082370165.1716681600&semt=sph");
+            background-size: cover;
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            background-color: white;
+            border: 10px solid white;
+            border-radius: 15px;
+            padding: 2rem;
+        }
+        .botao {
+            background: linear-gradient(to top, rgb(255, 125, 73), rgba(255, 255, 255, 0.993)) !important;
+            border: 0px solid white !important;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <a href="index.html"><button type="button" class="botao btn btn-info">Voltar</button></a>
+        <div id="addProdutoForm">
+            <div class="form-group">
+                <label for="nomeProduto" class="form-label">Nome *</label>
+                <input type="text" class="form-control" id="nomeProduto">
+            </div>
+            <div class="form-group">
+                <label for="descricaoProduto" class="form-label">Descrição *</label>
+                <textarea class="form-control" id="descricaoProduto" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="precoProduto" class="form-label">Preço *(apenas numeros)</label>
+                <input type="number" class="form-control" id="precoProduto" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="imagemProduto" class="form-label">Imagem do Produto *</label>
+                <input type="text" class="form-control" id="imagemProduto" placeholder="URL da imagem">
+            </div>
+            <div class="form-group">
+                <label for="idArtesaoProduto" class="form-label">ID do Artesão *(apenas numeros)</label>
+                <input type="number" class="form-control"id="idArtesaoProduto">
+            </div>
+            <button onclick="createProduto();" class="botao btn btn-primary" id="adicionarProduto">Adicionar Produto</button>
+        </div>
+        <div id="mensagemSucessoProduto" class="alert alert-success mt-3" style="display: none;">
+            Produto adicionado com sucesso!
+        </div>
+        <script type="text/javascript">
+            async function createProduto() {
+                let nome = document.getElementById('nomeProduto').value;
+                let descricao = document.getElementById('descricaoProduto').value;
+                let preco = parseFloat(document.getElementById('precoProduto').value);
+                let imagem = document.getElementById('imagemProduto').value;
+                let idArtesao = parseInt(document.getElementById('idArtesaoProduto').value);
+                
+                if (!nome ||!descricao ||!preco ||!imagem ||!idArtesao) {
+                    alert("Verifique as entradas com '*' pois algumas podem estar vazias");
+                    return;
+                }
+                
+                const newProduto = {
+                    nome,
+                    descricao,
+                    preco,
+                    imagem,
+                    idArtesao
+                };
+                
+                const response = await eel.create_produto(newProduto)();
+                if (response === "Produto adicionado com sucesso!") {
+                    document.getElementById('mensagemSucessoProduto').style.display = 'block';
+                } else {
+                    alert(response);
+                }
+            }
+        </script>
+    </main>
+</body>
+</html>
