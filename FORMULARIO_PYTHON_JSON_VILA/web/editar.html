@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar Artesão - Vila do Artesão</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script type="text/javascript" src="/eel.js"></script>
+    <style>
+        body {
+            background-image: linear-gradient(to top, rgb(255, 255, 255),rgba(243, 114, 63, 0.514) );
+            background-size: cover;
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            background-color: white;
+            border: 10px solid white;
+            border-radius: 15px;
+        }
+        .botao {
+            background: linear-gradient(to top, rgb(255, 125, 73), rgba(255, 255, 255, 0.993)) !important;
+            border: 0px solid white !important;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <a href="/editar_revelar.html"><button type="button" class="botao btn btn-info">Voltar</button></a>
+        <h1>Adicionar Novo Artesão</h1>
+        <div id="editArtesaoForm">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome *</label>
+                <input type="text" class="form-control" id="nome">
+                <button onclick="editarnome();" class="botao btn btn-primary" id="adicionar">Confirmar</button>
+            </div>
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoria *</label>
+                <input type="text" class="form-control" id="categoria">
+                <button onclick="editarcategoria();" class="botao btn btn-primary" id="adicionar">Confirmar</button>
+            </div>
+            <div class="mb-3">
+                <label for="titulo_biografia" class="form-label">Título da Biografia</label>
+                <input type="text" class="form-control" id="titulo_biografia">
+                <button onclick="editartitulo();" class="botao btn btn-primary" id="adicionar">Confirmar</button>
+            </div>
+            <div class="mb-3">
+                <label for="biografia" class="form-label">Biografia</label>
+                <textarea class="form-control" id="descricao" rows="3"></textarea>
+                <button onclick="editarbiografia();" class="botao btn btn-primary" id="adicionar">Confirmar</button>
+            </div>
+            <div class="mb-3">
+                <label for="imagem" class="form-label">Foto do Perfil</label>
+                <input type="text" class="form-control" id="imagem" placeholder="URL da imagem">
+                <button onclick="editarfoto();" class="botao btn btn-primary" id="adicionar">Confirmar</button>
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone *</label>
+                <input type="tel" class="form-control" id="telefone">
+                <button onclick="editartelefone();" class="botao btn btn-primary" id="adicionar">Confirmar</button>
+            </div>
+            <div class="mb-3">
+                <label for="facebook" class="form-label">Facebook</label>
+                <input type="text" class="form-control" id="facebook">
+                <button onclick="editarfacebook();" class="botao btn btn-primary" id="adicionar">Confirmar</button>
+            </div>
+            <div class="mb-3">
+                <label for="instagram" class="form-label">Instagram</label>
+                <input type="text" class="form-control" id="instagram">
+                <button onclick="editarinstagram();" class="botao btn btn-primary" id="adicionar">Confirmar</button>
+            </div>
+            
+        </div>
+        <div id="mensagemSucesso" class="alert alert-success mt-3" style="display: none;">
+            Informação Alterada!
+        </div>
+        <script type="text/javascript">
+
+            // Função para extrair o ID do artesão da URL
+            function getArtisaoIdFromUrl() {
+                const urlParams = window.location.hash.replace("#","");
+                
+
+                console.log(urlParams);
+                return urlParams;
+            }
+
+            // Função para editar o nome do artesão
+            async function editarnome() {
+                const id = getArtisaoIdFromUrl();
+                console.log(id);
+                const novoNome = document.getElementById('nome').value;
+
+                if (!novoNome) {
+                    alert("O campo de nome não pode estar vazio");
+                    return;
+                }
+
+                const response = await eel.editar_nome_artesao_expose(parseInt(id), novoNome)();
+                if (response === "Nome do artesão atualizado com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+
+
+            // Função para editar a categoria do artesão
+            async function editarcategoria() {
+                const id = getArtisaoIdFromUrl();
+                const novaCategoria = document.getElementById('categoria').value;
+
+                if (!novaCategoria) {
+                    alert("O campo de categoria não pode estar vazio");
+                    return;
+                }
+
+                const response = await eel.editar_categoria_artesao_expose(parseInt(id), novaCategoria)();
+                if (response === "Categoria do artesão atualizada com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+
+            // Função para editar o título da biografia do artesão
+            async function editartitulo() {
+                const id = getArtisaoIdFromUrl();
+                const novoTitulo = document.getElementById('titulo_biografia').value;
+
+                const response = await eel.editar_titulo_biografia_artesao_expose(parseInt(id), novoTitulo)();
+                if (response === "Título da biografia do artesão atualizado com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+
+            // Função para editar a biografia do artesão
+            async function editarbiografia() {
+                const id = getArtisaoIdFromUrl();
+                const novaBiografia = document.getElementById('descricao').value;
+
+                const response = await eel.editar_biografia_artesao_expose(parseInt(id), novaBiografia)();
+                if (response === "Biografia do artesão atualizada com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+
+            // Função para editar a foto do perfil do artesão
+            async function editarfoto() {
+                const id = getArtisaoIdFromUrl();
+                const novaFoto = document.getElementById('imagem').value;
+
+                const response = await eel.editar_foto_perfil_artesao_expose(parseInt(id), novaFoto)();
+                if (response === "Foto do perfil do artesão atualizada com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+
+            // Função para editar o telefone do artesão
+            async function editartelefone() {
+                const id = getArtisaoIdFromUrl();
+                const novoTelefone = document.getElementById('telefone').value;
+
+                const response = await eel.editar_telefone_artesao_expose(parseInt(id), novoTelefone)();
+                if (response === "Telefone do artesão atualizado com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+
+            // Função para editar o Facebook do artesão
+            async function editarfacebook() {
+                const id = getArtisaoIdFromUrl();
+                const novoFacebook = document.getElementById('facebook').value;
+
+                const response = await eel.editar_facebook_artesao_expose(parseInt(id), novoFacebook)();
+                if (response === "Facebook do artesão atualizado com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+
+            // Função para editar o Instagram do artesão
+            async function editarinstagram() {
+                const id = getArtisaoIdFromUrl();
+                const novoInstagram = document.getElementById('instagram').value;
+
+                const response = await eel.editar_instagram_artesao_expose(parseInt(id), novoInstagram)();
+                if (response === "Instagram do artesão atualizado com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+        </script>
+    </main>
+</body>
+</html>

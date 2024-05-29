@@ -1,0 +1,12 @@
+{
+  "produtos": [
+    {
+      "nome": "TESTE",
+      "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nisl nisl, placerat sed velit in, porttitor facilisis metus. Proin elementum ligula eget dictum sollicitudin. Phasellus euismod ipsum in enim volutpat, vitae dictum lacus malesuada. Donec lobortis faucibus bibendum. Duis fringilla quis quam at finibus. Aenean sed ligula orci. Etiam nisi ex, laoreet vitae aliquet nec, interdum ut erat. Nullam maximus purus ut condimentum sollicitudin. Donec in egestas dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam ut ullamcorper sapien. Vivamus non lectus eu neque lobortis accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque tempus sed augue non ultricies. ",
+      "preco": 123.45,
+      "imagem": "https://mundodalupa.com.br/wp-content/uploads/2021/10/produto-teste_6355364765230299551-5dca5b60c67efea46e15917435354683-640-0.jpg",
+      "idArtesao": 1,
+      "id": 1
+    }
+  ]
+}

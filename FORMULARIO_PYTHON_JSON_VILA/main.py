@@ -1,6 +1,7 @@
 import eel
 import json
 import os
+from editar import *
 
 eel.init('web')
 
@@ -62,6 +63,15 @@ def read_artesoes():
     except Exception as e:
         return f"Erro ao ler artesões: {e}"
 
+@eel.expose
+def read_produtos():
+    try:
+        ensure_json_file()
+        data = json_read(PRODUTOS_JSON_FILE)
+        return data.get('produtos', [])
+    except Exception as e:
+        return f"Erro ao ler produtos: {e}"
+
 
 @eel.expose
 def create_artesao(new_artesao):
@@ -89,8 +99,95 @@ def create_produto(new_produto):
     except Exception as e:
         return f"Erro ao criar produto: {e}"
 
+@eel.expose
+def editar_nome_artesao_expose(id_artesao, novo_nome):
+    return editar_nome_artesao(id_artesao, novo_nome)
+
+@eel.expose
+def editar_categoria_artesao_expose(id_artesao, nova_categoria):
+    return editar_categoria_artesao(id_artesao, nova_categoria)
+
+@eel.expose
+def editar_foto_perfil_artesao_expose(id_artesao, nova_foto_perfil):
+    return editar_foto_perfil_artesao(id_artesao, nova_foto_perfil)
+
+@eel.expose
+def editar_telefone_artesao_expose(id_artesao, novo_telefone):
+    return editar_telefone_artesao(id_artesao, novo_telefone)
+
+@eel.expose
+def editar_facebook_artesao_expose(id_artesao, novo_facebook):
+    return editar_facebook_artesao(id_artesao, novo_facebook)
+@eel.expose
+def editar_instagram_artesao_expose(id_artesao, novo_instagram):
+    return editar_instagram_artesao(id_artesao, novo_instagram)
+
+@eel.expose
+def editar_titulo_biografia_artesao_expose(id_artesao, novo_titulo):
+    return editar_titulo_biografia_artesao(id_artesao, novo_titulo)
+
+@eel.expose
+def editar_biografia_artesao_expose(id_artesao, nova_bio):
+    return editar_biografia_artesao(id_artesao, nova_bio)
+    
+@eel.expose
+def editar_nome_produto_expose(id_produto, novo_nome):
+    return editar_nome_produto(id_produto, novo_nome)
+
+@eel.expose
+def editar_descricao_produto_expose(id_produto, nova_descricao):
+    return editar_descricao_produto(id_produto, nova_descricao)
+
+@eel.expose
+def editar_preco_produto_expose(id_produto, novo_preco):
+    return editar_preco_produto(id_produto, novo_preco)
+
+@eel.expose
+def editar_imagem_produto_expose(id_produto, nova_imagem):
+    return editar_imagem_produto(id_produto, nova_imagem)
+
+@eel.expose
+def editar_id_artesao_produto_expose(id_produto, novo_id_artesao):
+    return editar_id_artesao_produto(id_produto, novo_id_artesao)
+
+@eel.expose
+def deletar_artesao(id_artesao):
+    try:
+        ensure_json_file()
+        data = json_read(JSON_FILE)
+        artesaos = data.get('artesoes', [])
+        
+        # Procura o artesão com o ID fornecido e remove
+        for i, artesao in enumerate(artesaos):
+            if artesao.get('id') == id_artesao:
+                del artesaos[i]
+                update_json_file(data)
+                return "Artesão deletado com sucesso!"
+        
+        return "Artesão não encontrado."
+    except Exception as e:
+        return f"Erro ao deletar artesão: {e}"
+
+@eel.expose
+def deletar_produto(id_produto):
+    try:
+        ensure_json_file()
+        data = json_read(PRODUTOS_JSON_FILE)
+        produtos = data.get('produtos', [])
+        
+        # Procura o produto com o ID fornecido e remove
+        for i, produto in enumerate(produtos):
+            if produto.get('id') == id_produto:
+                del produtos[i]
+                Pupdate_json_file(data)
+                return "Produto deletado com sucesso!"
+        
+        return "Produto não encontrado."
+    except Exception as e:
+        return f"Erro ao deletar produto: {e}"
 
 
-print("Abra o Seu navegador!")
-print("Para Fechar a aplicação, Basta fechar essa janela e a aba do navegador.")
+
+print("ABRA O NAVEGADOR, A INTERFACE DO PROGRAMA IRÁ APARECER LÁ")
+print("para fechar o software feche esse terminal e a pagina do navegador.")
 eel.start('index.html', mode='default')

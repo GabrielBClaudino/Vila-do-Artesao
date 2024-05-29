@@ -8,7 +8,7 @@
     <script type="text/javascript" src="/eel.js"></script>
     <style>
         body {
-            background-image: linear-gradient(to top, rgba(243, 114, 63, 0.514), rgba(94, 93, 93, 0.74)), url("https://img.freepik.com/fotos-gratis/maos-segurando-uma-forma-de-coracao-vermelho-sobre-fundo-de-madeira_23-2148355038.jpg?size=626&ext=jpg&ga=GA1.1.2082370165.1716681600&semt=sph");
+            background-image: linear-gradient(to top, rgb(255, 255, 255),rgba(243, 114, 63, 0.514) );
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -23,11 +23,12 @@
         }
         .card {
             margin: 5px;
-            background-color: #e2e2e200;
+            background-color: rgba(243, 114, 63, 0.514);
             border: 5px solid rgba(255, 255, 255, 0.452);
+
             border-radius: 15px;
             display: inline-block;
-            color: white;
+            color: rgb(0, 0, 0);
         }
         .card:hover {
             animation-name: trocarfundo;
@@ -35,19 +36,19 @@
             animation-fill-mode: both;
             animation-direction: alternate;
             margin: 5px;
-            background-color: #e2e2e2;
-            border: 5px solid rgba(255, 255, 255, 0.452);
+            background-color: #ffffff;
+            border: 5px solid rgb(255, 255, 255);
             border-radius: 15px;
             display: inline-block;
             color: rgb(12, 12, 12)
         }
         @keyframes trocarfundo {
-            0% { background-color: #e2e2e200; color: white; }
+            0% { background-color: rgba(243, 114, 63, 0.514); color: white; }
             50% { color: rgb(12, 12, 12, 0.000); }
-            100% { background-color: #e2e2e2; color: rgb(12, 12, 12); }
+            100% { background-color: #ffffff; color: rgb(12, 12, 12); }
         }
         .btn { background-color: #eb9573 !important; color: black; }
-        h1 { margin-bottom: 20px; color: #ffffff; }
+        h1 { margin-bottom: 20px; color: #000000; }
     </style>
 </head>
 <body>
@@ -66,6 +67,20 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Adicionar Produto</h5>
+                </div>
+            </div>
+        </a>
+        <a href="editar_revelar.html">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Editar Artesão</h5>
+                </div>
+            </div>
+        </a>
+        <a href="deletar.html">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Deletar Artesão e Editar Produtos</h5>
                 </div>
             </div>
         </a>
