@@ -157,10 +157,7 @@ function vocevaigostartmb(){
                         <img src="${produtos.imagem_produto}" class="img-fluid product-image" alt="">
                     </a>
 
-                    <div class="product-top d-flex">
-                        <span class="product-alert me-auto">R$ ${produtos.preco}</span>
-                    </div>
-
+                    
                     <div class="product-info d-flex">
                         <div>
                             <h5 class="product-title mb-0">
