@@ -5,7 +5,7 @@ from editar import *
 
 eel.init('web')
 
-JSON_FILE = 'artesoes.json'
+ARTESAO_JSON_FILE = 'artesao.json'
 PRODUTOS_JSON_FILE = 'produto.json'
 
 def json_read(file_path, encoding='utf-8'):
@@ -18,17 +18,16 @@ def json_write(file_path, data, encoding='utf-8'):
     return "Foi criado com Sucesso!"
 
 def ensure_json_file():
-    if not os.path.exists(JSON_FILE):
-        with open(JSON_FILE, 'w') as file:
+    if not os.path.exists(ARTESAO_JSON_FILE):
+        with open(ARTESAO_JSON_FILE, 'w') as file:
             json.dump({"artesoes": []}, file)
     if not os.path.exists(PRODUTOS_JSON_FILE):
         with open(PRODUTOS_JSON_FILE, 'w') as file:
             json.dump({"produtos": []}, file)
 
-
 def update_json_file(data):
     ensure_json_file()
-    with open(JSON_FILE, 'w') as file:
+    with open(ARTESAO_JSON_FILE, 'w') as file:
         json.dump(data, file, ensure_ascii=False, indent=2)
 
 def Pupdate_json_file(data):
@@ -39,7 +38,7 @@ def Pupdate_json_file(data):
 @eel.expose
 def json_update(new_data):
     try:
-        data = json_read(JSON_FILE)
+        data = json_read(ARTESAO_JSON_FILE)
         data.update(new_data)
         update_json_file(data)
         return data
@@ -49,7 +48,7 @@ def json_update(new_data):
 @eel.expose
 def json_delete():
     try:
-        os.remove(JSON_FILE)
+        os.remove(ARTESAO_JSON_FILE)
         return True
     except Exception as e:
         return str(e)
@@ -58,7 +57,7 @@ def json_delete():
 def read_artesoes():
     try:
         ensure_json_file()
-        data = json_read(JSON_FILE)
+        data = json_read(ARTESAO_JSON_FILE)
         return data.get('artesoes', [])
     except Exception as e:
         return f"Erro ao ler artesões: {e}"
@@ -72,12 +71,11 @@ def read_produtos():
     except Exception as e:
         return f"Erro ao ler produtos: {e}"
 
-
 @eel.expose
 def create_artesao(new_artesao):
     try:
         ensure_json_file()
-        data = json_read(JSON_FILE)
+        data = json_read(ARTESAO_JSON_FILE)
         new_id = len(data.get('artesoes', [])) + 1
         new_artesao['id'] = new_id
         data['artesoes'].append(new_artesao)
@@ -118,6 +116,7 @@ def editar_telefone_artesao_expose(id_artesao, novo_telefone):
 @eel.expose
 def editar_facebook_artesao_expose(id_artesao, novo_facebook):
     return editar_facebook_artesao(id_artesao, novo_facebook)
+
 @eel.expose
 def editar_instagram_artesao_expose(id_artesao, novo_instagram):
     return editar_instagram_artesao(id_artesao, novo_instagram)
@@ -154,7 +153,7 @@ def editar_id_artesao_produto_expose(id_produto, novo_id_artesao):
 def deletar_artesao(id_artesao):
     try:
         ensure_json_file()
-        data = json_read(JSON_FILE)
+        data = json_read(ARTESAO_JSON_FILE)
         artesaos = data.get('artesoes', [])
         
         # Procura o artesão com o ID fornecido e remove
@@ -185,8 +184,6 @@ def deletar_produto(id_produto):
         return "Produto não encontrado."
     except Exception as e:
         return f"Erro ao deletar produto: {e}"
-
-
 
 print("ABRA O NAVEGADOR, A INTERFACE DO PROGRAMA IRÁ APARECER LÁ")
 print("para fechar o software feche esse terminal e a pagina do navegador.")
