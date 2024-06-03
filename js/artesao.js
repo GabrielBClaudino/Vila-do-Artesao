@@ -115,8 +115,6 @@ function artesaopage(){
                                         </a>
                     
                                         <div class="product-top d-flex">
-                                            <h1 class="product-alert me-auto">R$ ${produtos.preco}</h1>
-                    
                                         </div>
                     
                                         <div class="product-info d-flex">
