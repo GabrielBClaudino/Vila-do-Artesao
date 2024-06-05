@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar Produto - Vila do Artesão</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script type="text/javascript" src="/eel.js"></script>
+    <style>
+        body {
+            background-image: linear-gradient(to top, rgb(255, 255, 255),rgba(243, 114, 63, 0.514) );
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            background-color: white;
+            border: 10px solid white;
+            border-radius: 15px;
+        }
+        .botao {
+            background: linear-gradient(to top, rgb(255, 125, 73), rgba(255, 255, 255, 0.993)) !important;
+            border: 1px solid rgb(0, 0, 0) !important;
+            color: black;
+        }
+        .botao:hover {
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.993),rgb(255, 125, 73) ) !important;
+            border: 1px solid rgb(0, 0, 0) !important;
+            color: black;
+        }
+
+
+
+        .card {
+            margin-bottom: 20px;
+        }
+        .card img {
+            max-height: 200px;
+            object-fit: cover;
+        }
+        .highlight {
+            background-color: rgb(255, 255, 0);
+            animation-name: highlight-glow;
+            animation-duration: 1s;
+        }
+
+        @keyframes highlight-glow {
+            0% { background-color: yellow; }
+            50% { background-color: rgba(255, 255, 0, 0.413);}
+            100% { background-color: rgb(255, 255, 0); }
+        }
+
+        .card {
+            height: 100%;
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+        }
+        .card-text {
+            flex-grow: 1;
+        }
+        .diminuirpesquisa{
+            width: 50%;
+            margin-left: 26%;
+            margin-right: 10%;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body onload="setValues();">
+    <main class="container">
+        <a href="/index.html"><button type="button" class="botao btn btn-info">Voltar</button></a>
+        <h1>Editar Produto</h1>
+        <div id="editProdutoForm">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome *</label>
+                <input type="text" class="form-control" id="nome">
+            </div>
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição *</label>
+                <textarea class="form-control" id="descricao" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="preco" class="form-label">Preço *</label>
+                <input type="number" class="form-control" id="preco">
+            </div>
+            <div class="mb-3">
+                <label for="imagem" class="form-label">Imagem</label>
+                <input type="text" class="form-control" id="imagem" placeholder="URL da imagem">
+            </div>
+            <div class="mb-3">
+                <label for="idArtesao" class="form-label">ID do Artesão *</label>
+                <input type="number" class="form-control" id="idArtesao">
+            </div>
+        </div>
+            <button onclick="confirmaMudancas();" class="botao btn btn-primary" id="adicionar">Confirmar Mudanças</button>
+        <div id="mensagemSucesso" class="alert alert-success mt-3" style="display: none;">
+            Informação Alterada!
+        </div>
+        <script type="text/javascript">
+            function setValues(){
+                let param = getProdutoIdFromUrl();
+                document.getElementById('nome').value = param.nome;
+                document.getElementById('descricao').value = param.desc.replace(/%20/g," ");
+                document.getElementById('preco').value = param.preco;
+                document.getElementById('imagem').value = param.imagem;
+                document.getElementById('idArtesao').value = param.idART;
+
+            }
+
+            // Função para extrair o ID do produto da URL
+            function getProdutoIdFromUrl() {
+                const urlParams = window.location.hash.replace("#", "");
+                const paramsArray = urlParams.split("%");
+                let paramsObj = {};
+                
+                // Loop para tratar os parâmetros
+                let currentKey = "";
+                for (let i = 0; i < paramsArray.length; i++) {
+                    let param = paramsArray[i];
+                    if (param.includes("=")) {
+                        let [key, value] = param.split("=");
+                        currentKey = key;
+                        paramsObj[currentKey] = decodeURIComponent(value);
+                    } else if (currentKey) {
+                        paramsObj[currentKey] += "%" + decodeURIComponent(param);
+                    }
+                }
+
+                return paramsObj;
+            }
+            function confirmaMudancas(){
+                editarNome();
+                editarDescricao();
+                editarImagem();
+                editarPreco();
+                editarIdArtesao();
+            }
+            // Função para editar o nome do produto
+            async function editarNome() {
+                const params = getProdutoIdFromUrl();
+                const novoNome = document.getElementById('nome').value;
+
+                if (!novoNome) {
+                    alert("O campo de nome não pode estar vazio");
+                    return;
+                }
+
+                const response = await eel.editar_nome_produto_expose(parseInt(params.id), novoNome)();
+                if (response === "Nome do produto atualizado com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+
+            // Função para editar a descrição do produto
+            async function editarDescricao() {
+                const params = getProdutoIdFromUrl();
+                const novaDescricao = document.getElementById('descricao').value;
+
+                if (!novaDescricao) {
+                    alert("O campo de descrição não pode estar vazio");
+                    return;
+                }
+
+                const response = await eel.editar_descricao_produto_expose(parseInt(params.id), novaDescricao)();
+                if (response === "Descrição do produto atualizada com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+
+            // Função para editar o preço do produto
+            async function editarPreco() {
+                const params = getProdutoIdFromUrl();
+                const novoPreco = document.getElementById('preco').value;
+
+                if (!novoPreco) {
+                    alert("O campo de preço não pode estar vazio");
+                    return;
+                }
+
+                const response = await eel.editar_preco_produto_expose(parseInt(params.id), parseFloat(novoPreco))();
+                if (response === "Preço do produto atualizado com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+
+            // Função para editar a imagem do produto
+            async function editarImagem() {
+                const params = getProdutoIdFromUrl();
+                const novaImagem = document.getElementById('imagem').value;
+
+                const response = await eel.editar_imagem_produto_expose(parseInt(params.id), novaImagem)();
+                if (response === "Imagem do produto atualizada com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+
+            // Função para editar o ID do artesão do produto
+            async function editarIdArtesao() {
+                const params = getProdutoIdFromUrl();
+                const novoIdArtesao = document.getElementById('idArtesao').value;
+
+                if (!novoIdArtesao) {
+                    alert("O campo de ID do artesão não pode estar vazio");
+                    return;
+                }
+
+                const response = await eel.editar_id_artesao_produto_expose(parseInt(params.id), parseInt(novoIdArtesao))();
+                if (response === "ID do artesão do produto atualizado com sucesso!") {
+                    document.getElementById('mensagemSucesso').style.display = 'block';
+                    alert(response);
+                } else {
+                    alert(response);
+                }
+            }
+
+    </script>
+</main>
+</body>
+</html>
